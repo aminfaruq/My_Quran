@@ -45,7 +45,7 @@ class AyatRepositoryImpl(
     }
 
     override fun getAyatAsPage(): LiveData<PagedList<Ayat>> {
-        return LivePagedListBuilder(getAyatAsPaged(), 20).build()
+        return LivePagedListBuilder(getAyatAsPaged(), 50).build()
     }
 
     override fun deleteAyat() {

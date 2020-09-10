@@ -44,7 +44,7 @@ class SuratRepositoryImpl(
     }
 
     override fun getSuratAsPage(): LiveData<PagedList<Surat>> {
-        return LivePagedListBuilder(getSuratAsPaged(), 20).build()
+        return LivePagedListBuilder(getSuratAsPaged(), 50).build()
     }
 
 }
