@@ -9,7 +9,6 @@ import co.id.aminfaruq.core.data.mapper.remote.ItemAyatMapper
 import co.id.aminfaruq.core.data.source.local.room.QuranDao
 import co.id.aminfaruq.core.data.source.remote.network.ApiService
 import co.id.aminfaruq.core.domain.model.Ayat
-import co.id.aminfaruq.core.domain.model.Surat
 import co.id.aminfaruq.core.domain.repository.AyatRepository
 import io.reactivex.Single
 import kotlinx.coroutines.GlobalScope
@@ -49,6 +48,11 @@ class AyatRepositoryImpl(
     }
 
     override fun deleteAyat() {
-        quranDao.nukeAyatTable()
+        runBlocking {
+            val job = GlobalScope.launch {
+                quranDao.nukeAyatTable()
+            }
+            job.join()
+        }
     }
 }

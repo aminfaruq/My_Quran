@@ -2,7 +2,6 @@ package co.id.aminfaruq.core.data.mapper.local
 
 import co.id.aminfaruq.core.data.mapper.BaseMapper
 import co.id.aminfaruq.core.data.source.local.entity.AyatEntity
-import co.id.aminfaruq.core.data.source.remote.response.AyatItem
 import co.id.aminfaruq.core.domain.model.Ayat
 
 class AyatEntityMapper : BaseMapper<AyatEntity , Ayat> {

@@ -5,6 +5,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -32,9 +33,9 @@ class AyatAdapter(private val context: Context?) :
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val nomor = itemView.tvNomorAyat
-        val arabic = itemView.tvArabic
-        val terjemahan = itemView.tvTerjemahan
+        val nomor: TextView = itemView.tvNomorAyat
+        val arabic: TextView = itemView.tvArabic
+        val terjemahan: TextView = itemView.tvTerjemahan
     }
 
     companion object {

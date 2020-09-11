@@ -26,6 +26,9 @@ buildscript {
     ext.lifecycle_version = "2.2.0"
     ext.lottie_version = "3.4.1"
 
+    ext.shimmer_version = "0.5.0"
+
+
     ext.koin_version = "2.1.5"
 
     repositories {

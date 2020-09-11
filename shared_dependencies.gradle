@@ -33,6 +33,9 @@ dependencies {
     //rx-room
     implementation "androidx.room:room-rxjava2:2.2.2"
 
+    implementation "com.facebook.shimmer:shimmer:$shimmer_version"
+
+
     implementation 'com.facebook.stetho:stetho:1.5.1'
 
     implementation "net.zetetic:android-database-sqlcipher:4.4.0"

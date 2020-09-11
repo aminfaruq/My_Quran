@@ -13,4 +13,6 @@ interface SuratUseCase {
 
     fun getSuratAsPage() : LiveData<PagedList<Surat>>
 
+    fun deleteSurat()
+
 }

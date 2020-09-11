@@ -3,6 +3,7 @@ package co.id.aminfaruq.myquran.ui.ayat
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,10 +11,6 @@ import co.id.aminfaruq.core.domain.model.Surat
 import co.id.aminfaruq.core.ui.AyatAdapter
 import co.id.aminfaruq.myquran.R
 import kotlinx.android.synthetic.main.activity_detail_ayat.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import org.koin.android.ext.android.inject
 
 class DetailAyatActivity : AppCompatActivity() {
@@ -37,10 +34,17 @@ class DetailAyatActivity : AppCompatActivity() {
         tv_info_surat.text = "${surat?.type} ${surat?.ayat} ayat"
 
         surat?.nomor?.let { viewModel.getAyatBySurat(it) }
+        img_back.setOnClickListener {
+            onBackPressed()
+        }
 
         val ayatAdapter = AyatAdapter(this)
 
         with(viewModel) {
+            showProgressbar.observe(this@DetailAyatActivity, Observer { isVisible ->
+                pb_ayat.visibility = if (isVisible) View.VISIBLE else View.GONE
+            })
+
             ayatByLocal.observe(this@DetailAyatActivity, Observer { response ->
                 ayatAdapter.submitList(response)
                 ayatAdapter.notifyDataSetChanged()
@@ -55,9 +59,6 @@ class DetailAyatActivity : AppCompatActivity() {
                     .show()
             })
 
-            showProgressbar.observe(this@DetailAyatActivity, Observer { isVisible ->
-                // pb_ayat.visibility = if (isVisible) View.VISIBLE else View.GONE
-            })
         }
 
         val linearLayout = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
@@ -70,13 +71,7 @@ class DetailAyatActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-
-        runBlocking {
-            val job = GlobalScope.launch {
-                viewModel.deleteAyatAfterDestroy()
-            }
-            job.join()
-        }
+        viewModel.deleteAyatAfterDestroy()
     }
 
 

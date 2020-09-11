@@ -5,11 +5,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import co.id.aminfaruq.core.R
-import co.id.aminfaruq.core.data.source.local.entity.SurahEntity
 import co.id.aminfaruq.core.domain.model.Surat
 import kotlinx.android.synthetic.main.item_surah.view.*
 
@@ -40,10 +40,10 @@ class SuratAdapter(private val context: Context? , private val onItemClick: OnIt
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val nomor = itemView.txtNumber
-        val nama = itemView.txtName
-        val info = itemView.txtInfo
-        val ayat = itemView.txtAyat
+        val nomor: TextView = itemView.txtNumber
+        val nama: TextView = itemView.txtName
+        val info: TextView = itemView.txtInfo
+        val ayat: TextView = itemView.txtAyat
     }
 
     companion object {

@@ -13,4 +13,7 @@ interface SuratRepository {
     fun saveSurah(surat: List<Surat>)
 
     fun getSuratAsPage() : LiveData<PagedList<Surat>>
+
+    fun deleteSurat()
+
 }

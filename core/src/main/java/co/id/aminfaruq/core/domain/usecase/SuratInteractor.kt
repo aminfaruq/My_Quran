@@ -7,4 +7,5 @@ class SuratInteractor(private val suratRepository: SuratRepository) : SuratUseCa
     override fun getSurat() = suratRepository.getSurat()
     override fun saveSurah(surat: List<Surat>) = suratRepository.saveSurah(surat)
     override fun getSuratAsPage() = suratRepository.getSuratAsPage()
+    override fun deleteSurat() = suratRepository.deleteSurat()
 }

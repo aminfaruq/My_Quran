@@ -27,4 +27,7 @@ interface QuranDao {
 
     @Query("DELETE FROM ayat")
     fun nukeAyatTable()
+
+    @Query("DELETE FROM surat")
+    fun nukeSuratTable()
 }

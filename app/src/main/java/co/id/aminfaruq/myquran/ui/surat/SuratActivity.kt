@@ -11,8 +11,6 @@ import co.id.aminfaruq.core.domain.model.Surat
 import co.id.aminfaruq.core.ui.SuratAdapter
 import co.id.aminfaruq.myquran.R
 import co.id.aminfaruq.myquran.ui.ayat.DetailAyatActivity
-import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_surat.*
 import org.koin.android.ext.android.inject
 
@@ -24,7 +22,7 @@ class SuratActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_surat)
 
-        val suratAdapter = SuratAdapter(this , object : SuratAdapter.OnItemClick{
+        val suratAdapter = SuratAdapter(this, object : SuratAdapter.OnItemClick {
             override fun onClick(item: Surat) {
                 val intent = Intent(this@SuratActivity, DetailAyatActivity::class.java)
                 intent.putExtra(DetailAyatActivity.EXTRA_SURAT, item)
@@ -60,6 +58,11 @@ class SuratActivity : AppCompatActivity() {
             layoutManager = linearLayout
             adapter = suratAdapter
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.deleteSuratAfterDestroy()
     }
 
 

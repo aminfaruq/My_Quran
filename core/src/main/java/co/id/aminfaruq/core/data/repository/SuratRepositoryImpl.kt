@@ -47,4 +47,13 @@ class SuratRepositoryImpl(
         return LivePagedListBuilder(getSuratAsPaged(), 50).build()
     }
 
+    override fun deleteSurat() {
+        runBlocking {
+            val job = GlobalScope.launch {
+                quranDao.nukeSuratTable()
+            }
+            job.join()
+        }
+    }
+
 }
