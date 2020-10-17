@@ -8,6 +8,8 @@ import co.id.aminfaruq.myquran.ui.ayat.AyatVM
 import co.id.aminfaruq.myquran.ui.surat.SuratVM
 import org.koin.dsl.module
 
+//model
+
 val useCaseModule = module {
     factory<SuratUseCase> { SuratInteractor(get()) }
     factory<AyatUseCase> { AyatInteractor(get()) }
